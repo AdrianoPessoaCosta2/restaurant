@@ -20,4 +20,6 @@ public interface UserRepository {
     UserEntity update(UserEntity userEntity);
 
     boolean deleteById(UUID id);
+
+    boolean updatePassword(UUID id, String password);
 }

@@ -1,6 +1,5 @@
 package br.com.restaurants.login.domain.service;
 
-import br.com.restaurants.core.model.User;
 import br.com.restaurants.database.adapter.UserPersistence;
 import br.com.restaurants.login.adpter.request.LoginRequest;
 import br.com.restaurants.login.adpter.response.TokenResponse;
@@ -9,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.UUID;
 
 @Service
 public class LoginService {
@@ -29,5 +30,9 @@ public class LoginService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
         }
         return new TokenResponse(jwtUtil.generateToken(request.login()));
+    }
+
+    public void updatePassword(String id, String password) {
+        userPersistence.updatePassword(UUID.fromString(id), password);
     }
 }

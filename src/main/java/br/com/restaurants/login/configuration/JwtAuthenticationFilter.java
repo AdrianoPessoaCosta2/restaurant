@@ -33,6 +33,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
+        String path = request.getServletPath();
+        if (path.equals("/login")
+                || path.startsWith("/swagger-ui")
+                || path.startsWith("/v3/api-docs")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
@@ -61,12 +69,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             } catch (InvalidTokenException ex) {
-                throw new InvalidTokenException(ex.getMessage());
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("Token inválido");
+                return;
             }
         }
 
         filterChain.doFilter(request, response);
     }
+
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {

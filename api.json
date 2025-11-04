@@ -1,0 +1,397 @@
+{
+	"info": {
+		"_postman_id": "acf86ac8-0631-4716-b1f1-d5b95f5909ee",
+		"name": "api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29259864"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "base_url_login",
+			"value": "http://localhost:8080/login",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Get ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/users/8ff8663d-8379-4089-b756-48fa3a100959",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"8ff8663d-8379-4089-b756-48fa3a100959"
+					]
+				},
+				"description": "GET para buscar um usuário pelo ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Get NAME",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/users/name/testPost",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"name",
+						"testPost"
+					]
+				},
+				"description": "GET para buscar usuário pelo nome."
+			},
+			"response": []
+		},
+		{
+			"name": "Post data (Create user)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"testPost\",\n    \"login\": \"test8\",\n    \"email\": \"test8@gmail.com\",\n    \"password\": \"test234\",\n    \"typeUser\": \"CUSTOMER\",\n    \"address\": {\n        \"street\": \"primeira\",\n        \"numberAddress\": \"14B\",\n        \"city\": \"São Paulo\",\n        \"state\": \"SP\",\n        \"zipCode\": \"01000-177\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "POST para cadastrar um novo usuário."
+			},
+			"response": []
+		},
+		{
+			"name": "Update data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"testUpdate\",\n    \"email\": \"test91@gmail.com\",\n    \"typeUser\": \"RESTAURANT_OWNWE\",\n    \"address\": {\n        \"street\": \"seg\",\n        \"numberAddress\": \"14B\",\n        \"city\": \"São Paulo\",\n        \"state\": \"SP\",\n        \"zipCode\": \"01000-177\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users/8ff8663d-8379-4089-b756-48fa3a100959",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"8ff8663d-8379-4089-b756-48fa3a100959"
+					]
+				},
+				"description": "PUT para atualizar dados de um usuário existente."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users/87d63c12-fbe5-406b-95af-eff8720219ce",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"87d63c12-fbe5-406b-95af-eff8720219ce"
+					]
+				},
+				"description": "DELETE para remover um usuário."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test\",\n    \"login\": \"test8\",\n    \"email\": \"test8@gmail.com\",\n    \"password\": \"test234\",\n    \"typeUser\": \"RESTAURANT_OWNWE\",\n    \"address\": {\n        \"street\": \"primeira\",\n        \"numberAddress\": \"14B\",\n        \"city\": \"São Paulo\",\n        \"state\": \"SP\",\n        \"zipCode\": \"01000-177\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post data (Login)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const body = pm.response.json();",
+							"pm.environment.set(\"token\", body.token);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"adminlogin\",\n    \"password\": \"admin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_login}}",
+					"host": [
+						"{{base_url_login}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "POST para autenticação e geração de token."
+			},
+			"response": []
+		},
+		{
+			"name": "New Request (Change password)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"admin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_login}}/8ff8663d-8379-4089-b756-48fa3a100959",
+					"host": [
+						"{{base_url_login}}"
+					],
+					"path": [
+						"login",
+						"8ff8663d-8379-4089-b756-48fa3a100959"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

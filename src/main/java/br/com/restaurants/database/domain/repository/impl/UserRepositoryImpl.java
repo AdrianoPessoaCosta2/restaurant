@@ -132,4 +132,15 @@ public class UserRepositoryImpl implements UserRepository {
         int rows = jdbcTemplate.update(sql, Map.of("id", id));
         return rows > 0;
     }
+
+    @Override
+    public boolean  updatePassword(UUID id, String password) {
+        String sql = """
+                   UPDATE restaurant.users
+                      SET password = :password
+                    WHERE user_public_id = :id
+                """;
+        int rows = jdbcTemplate.update(sql, Map.of("id", id, "password", password));
+        return rows > 0;
+    }
 }

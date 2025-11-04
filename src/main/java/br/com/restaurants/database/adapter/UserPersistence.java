@@ -44,4 +44,8 @@ public class UserPersistence {
     public void deleteById(UUID id) {
         userService.deleteById(id);
     }
+
+    public void updatePassword(UUID id, String password) {
+        userService.updatePassword(id, password);
+    }
 }

@@ -74,4 +74,11 @@ public class UserService {
             throw new ResourceNotFoundException("User not found");
         }
     }
+
+    public void updatePassword(UUID id, String password) {
+        String newPassword = BCryptUtil.encode(password);
+        if (!userRepository.updatePassword(id, newPassword)) {
+            throw new ResourceNotFoundException("User not found");
+        }
+    }
 }
