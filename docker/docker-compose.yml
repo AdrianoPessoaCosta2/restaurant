@@ -1,0 +1,44 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres123
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - restaurants-network
+
+  postgres:
+    image: postgres:16
+    container_name: restaurants-postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d postgres_db" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=postgres_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - "./postgres/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql"
+      - "./postgres/pgdata:/var/lib/postgresql/data"
+    networks:
+      - restaurants-network
+
+volumes:
+  pgData: {}
+
+networks:
+  restaurants-network:
+    driver: bridge
