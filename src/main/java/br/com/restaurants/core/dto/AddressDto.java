@@ -1,9 +1,9 @@
-package br.com.restaurants.core.model;
+package br.com.restaurants.core.dto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Address {
+public class AddressDto {
     private UUID publicId;
     private String street;
     private String numberAddress;

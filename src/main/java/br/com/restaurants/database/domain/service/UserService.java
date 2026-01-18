@@ -1,12 +1,12 @@
 package br.com.restaurants.database.domain.service;
 
-import br.com.restaurants.core.model.User;
+import br.com.restaurants.core.entities.User;
 import br.com.restaurants.database.domain.entity.AddressEntity;
 import br.com.restaurants.database.domain.entity.UserEntity;
 import br.com.restaurants.database.domain.mapper.UserMapper;
 import br.com.restaurants.database.domain.repository.UserRepository;
-import br.com.restaurants.exception.BusinessException;
-import br.com.restaurants.exception.ResourceNotFoundException;
+import br.com.restaurants.infrastructure.exception.BusinessException;
+import br.com.restaurants.infrastructure.exception.ResourceNotFoundException;
 import br.com.restaurants.login.configuration.BCryptUtil;
 import org.springframework.stereotype.Service;
 

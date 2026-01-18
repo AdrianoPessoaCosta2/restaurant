@@ -1,4 +1,4 @@
-package br.com.restaurants.exception;
+package br.com.restaurants.infrastructure.exception;
 
 public class BusinessException extends RuntimeException {
     public BusinessException(String message) {

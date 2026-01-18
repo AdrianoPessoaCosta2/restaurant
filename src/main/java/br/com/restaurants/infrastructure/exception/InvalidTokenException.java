@@ -1,4 +1,4 @@
-package br.com.restaurants.exception;
+package br.com.restaurants.infrastructure.exception;
 
 import io.jsonwebtoken.JwtException;
 

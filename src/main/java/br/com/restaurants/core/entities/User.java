@@ -1,4 +1,4 @@
-package br.com.restaurants.core.model;
+package br.com.restaurants.core.entities;
 
 import br.com.restaurants.core.enums.TypeUser;
 

@@ -1,6 +1,6 @@
 package br.com.restaurants.user.domain.mapper;
 
-import br.com.restaurants.core.model.User;
+import br.com.restaurants.core.entities.User;
 import br.com.restaurants.user.adapter.controller.response.UserResponse;
 import br.com.restaurants.user.adapter.controller.resquest.UserCreateRequest;
 import br.com.restaurants.user.adapter.controller.resquest.UserUpdateRequest;

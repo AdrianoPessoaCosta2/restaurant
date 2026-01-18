@@ -1,8 +1,8 @@
 package br.com.restaurants.user.configuration;
 
 
-import br.com.restaurants.exception.BusinessException;
-import br.com.restaurants.exception.ResourceNotFoundException;
+import br.com.restaurants.infrastructure.exception.BusinessException;
+import br.com.restaurants.infrastructure.exception.ResourceNotFoundException;
 import br.com.restaurants.user.adapter.controller.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;

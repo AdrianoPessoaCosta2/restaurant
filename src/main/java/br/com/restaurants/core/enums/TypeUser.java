@@ -1,10 +1,10 @@
 package br.com.restaurants.core.enums;
 
-import br.com.restaurants.exception.TypeUserException;
+import br.com.restaurants.infrastructure.exception.TypeUserException;
 
 public enum TypeUser {
     CUSTOMER("C"),
-    RESTAURANT_OWNWE("O");
+    RESTAURANT_OWNER("O");
 
     private String code;
 

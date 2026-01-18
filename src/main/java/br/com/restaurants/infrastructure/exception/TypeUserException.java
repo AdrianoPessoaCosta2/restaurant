@@ -1,4 +1,4 @@
-package br.com.restaurants.exception;
+package br.com.restaurants.infrastructure.exception;
 
 public class TypeUserException extends RuntimeException{
     public TypeUserException(String message) {

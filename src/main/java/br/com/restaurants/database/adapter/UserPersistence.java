@@ -1,6 +1,6 @@
 package br.com.restaurants.database.adapter;
 
-import br.com.restaurants.core.model.User;
+import br.com.restaurants.core.entities.User;
 import br.com.restaurants.database.domain.service.UserService;
 import org.springframework.stereotype.Service;
 

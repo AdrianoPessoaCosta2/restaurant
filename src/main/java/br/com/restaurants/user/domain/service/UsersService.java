@@ -1,8 +1,8 @@
 package br.com.restaurants.user.domain.service;
 
-import br.com.restaurants.core.model.User;
+import br.com.restaurants.core.entities.User;
 import br.com.restaurants.database.adapter.UserPersistence;
-import br.com.restaurants.exception.ResourceNotFoundException;
+import br.com.restaurants.infrastructure.exception.ResourceNotFoundException;
 import br.com.restaurants.user.adapter.controller.resquest.UserUpdateRequest;
 import br.com.restaurants.user.domain.mapper.UserControllerMapper;
 import br.com.restaurants.user.adapter.controller.response.UserResponse;

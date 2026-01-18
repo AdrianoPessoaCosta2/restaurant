@@ -1,6 +1,6 @@
 package br.com.restaurants.login.configuration;
 
-import br.com.restaurants.exception.InvalidTokenException;
+import br.com.restaurants.infrastructure.exception.InvalidTokenException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

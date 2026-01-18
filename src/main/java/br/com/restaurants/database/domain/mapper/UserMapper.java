@@ -1,6 +1,6 @@
 package br.com.restaurants.database.domain.mapper;
 
-import br.com.restaurants.core.model.User;
+import br.com.restaurants.core.entities.User;
 import br.com.restaurants.database.domain.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

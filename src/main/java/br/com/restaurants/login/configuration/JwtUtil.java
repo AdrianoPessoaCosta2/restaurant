@@ -1,6 +1,6 @@
 package br.com.restaurants.login.configuration;
 
-import br.com.restaurants.exception.InvalidTokenException;
+import br.com.restaurants.infrastructure.exception.InvalidTokenException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
