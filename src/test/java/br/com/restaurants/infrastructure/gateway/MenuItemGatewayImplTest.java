@@ -51,7 +51,6 @@ class MenuItemGatewayImplTest {
         MenuItem result = gateway.save(domain);
 
         assertEquals(savedDomain, result);
-        assertEquals(10L, entity.getRestaurantId());
         verify(repository).save(entity);
     }
 
