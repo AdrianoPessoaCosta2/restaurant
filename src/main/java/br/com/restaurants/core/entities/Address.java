@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Address {
+    private Long id;
     private UUID publicId;
     private String street;
     private String numberAddress;
@@ -11,6 +12,14 @@ public class Address {
     private String state;
     private String zipCode;
     private LocalDateTime lastModifiedDate;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public UUID getPublicId() {
         return publicId;

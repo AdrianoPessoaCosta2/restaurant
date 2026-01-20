@@ -1,21 +1,31 @@
-package br.com.restaurants.core.entities;
+package br.com.restaurants.infrastructure.persistence.entity;
 
+import br.com.restaurants.core.entities.Address;
 import br.com.restaurants.core.enums.TypeUser;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class User {
+public class UserEntity {
     private Long id;
+    private Long addressId;
     private Address address;
     private UUID publicId;
     private String name;
     private String login;
-    private String password;
     private String email;
+    private String password;
     private TypeUser typeUser;
     private LocalDateTime createDate;
     private LocalDateTime lastUpdatedDate;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -25,20 +35,12 @@ public class User {
         this.id = id;
     }
 
-    public Address getAddress() {
-        return address;
+    public Long getAddressId() {
+        return addressId;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
     public UUID getPublicId() {
@@ -71,6 +73,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public TypeUser getTypeUser() {
