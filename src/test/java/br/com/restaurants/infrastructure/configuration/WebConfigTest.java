@@ -35,6 +35,6 @@ class WebConfigTest {
 
         verify(registry).addInterceptor(authInterceptor);
         verify(registration).addPathPatterns("/**");
-        verify(registration).excludePathPatterns("/login", "/auth/login");
+        verify(registration).excludePathPatterns("/login", "/auth/login", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html");
     }
 }
